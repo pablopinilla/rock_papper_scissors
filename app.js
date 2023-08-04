@@ -8,11 +8,11 @@ function random(){
 
 function getComputerChoice (num){
     if (num === 1){
-        choice = "Rocks"
+        choice = "rock"
     } else if (num === 2){
-        choice = "Paper"
+        choice = "paper"
     } else {
-        choice = "Scissors"
+        choice = "scissors"
     }
     return choice
 }
@@ -21,24 +21,30 @@ function getComputerChoice (num){
 
 // Play a round of R,P,S. between the user and the machine
 
-function playRps(userChoice, computerChoice = "Rocks"){
-    if (userChoice === "Rocks" && computerChoice === "Rocks"){
+function playRps(userChoice, computerChoice = "rock"){
+    if (userChoice === "rock" && computerChoice === "rock"){
         return("Ahh!! Seems like a tie. Try again.")
-    } else if (userChoice === "Rocks" && computerChoice === "Scissors"){
+    } else if (userChoice === "rock" && computerChoice === "scissors"){
+        computerScore = computerScore+1
         return("You lose! Scissors beat Rocks.")
-    } else if (userChoice === "Rocks" && computerChoice === "Paper"){
+    } else if (userChoice === "rock" && computerChoice === "paper"){
+        playerScore = playerScore + 1
         return("You win! Rocks beat Paper.")
-    } else if (userChoice === "Paper" && computerChoice === "Paper"){
+    } else if (userChoice === "paper" && computerChoice === "paper"){
         return("Ahh!! Seems like a tie. Try again.")
-    } else if (userChoice === "Paper" && computerChoice === "Scissors"){
-        return("You lose! Scissors beat Paper.")
-    } else if (userChoice === "Paper" && computerChoice === "Rocks"){
+    } else if (userChoice === "paper" && computerChoice === "scissors"){
+        computerScore = computerScore+1
+        return("You lose! scissors beat paper.")
+    } else if (userChoice === "paper" && computerChoice === "rock"){
+        playerScore = playerScore+1
         return("You win! Paper beats Rocks.")
-    } else if (userChoice === "Scissors" && computerChoice === "Scissors"){
+    } else if (userChoice === "scissors" && computerChoice === "scissors"){
         return("Ahh!! Seems like a tie. Try again.")
-    } else if (userChoice === "Scissors" && computerChoice === "Rocks"){
+    } else if (userChoice === "scissors" && computerChoice === "rock"){
+        computerScore = computerScore+1
         return("You lose! Rocks beat Scissors.")
-    } else if (userChoice === "Scissors" && computerChoice === "Paper"){
+    } else if (userChoice === "scissors" && computerChoice === "paper"){
+        playerScore = playerScore+1
         return("You win! Scissors beat Paper.")
     }
 }
@@ -49,14 +55,24 @@ function playRps(userChoice, computerChoice = "Rocks"){
 
 //Play five rounds and for each round keep the score.
 
+let playerScore = 0;
+let computerScore = 0;
+let result = "lost! :("
+
 function game(){
     for(let i = 0; i < 5; i++){
 
-        const playerSelection = "Scissors"
+        let playerSelection = prompt("Rocks, Paper or Scissors?")
         const computerSelection = getComputerChoice(random());
-        console.log(playRps(playerSelection, computerSelection))
-
+        console.log(playRps(playerSelection.toLowerCase(), computerSelection))
+        console.log(playerSelection)
     }
+    if (playerScore > computerScore){
+        result = "won! :D"
+    } else {
+        result;
+    }
+    console.log(`Your score is ${playerScore}, your opponent's score is ${computerScore}. You ${result}`)
 }
 
 game()
