@@ -58,6 +58,21 @@ function playRps(userChoice, computerChoice = "rock"){
 let playerScore = 0;
 let computerScore = 0;
 let result = "lost! :("
+const rockBtn = document.querySelector("#rockBtn")
+const paperBtn = document.querySelector("#paperBtn")
+const scissorsBtn = document.querySelector("#scissorsBtn")
+const buttons = document.querySelectorAll("button")
+
+
+buttons.forEach((button)=>{
+    button.addEventListener("click", ()=>{
+        console.log("OUYCH!")
+    })
+})
+
+
+
+
 
 function game(){
         let playerSelection = prompt("Rocks, Paper or Scissors?")
@@ -72,4 +87,4 @@ function game(){
     console.log(`Your score is ${playerScore}, your opponent's score is ${computerScore}. You ${result}`)
 }
 
-game()
+
