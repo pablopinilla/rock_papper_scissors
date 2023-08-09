@@ -16,34 +16,49 @@ function getComputerChoice (num){
     }
     return choice
 }
-
+const results = document.querySelector(".results")
+const win = document.createElement("div")
+win.textContent = "You win!"
+const tie = document.createElement("div")
+tie.textContent = "Ahh!! Seems like a tie. Try again."
+const lose = document.createElement("div")
+lose.textContent = "You lose!"
 
 
 // Play a round of R,P,S. between the user and the machine
 
 function playRps(userChoice, computerChoice = "rock"){
     if (userChoice === "rock" && computerChoice === "rock"){
+        results.appendChild(tie)
         return("Ahh!! Seems like a tie. Try again.")
     } else if (userChoice === "rock" && computerChoice === "scissors"){
         computerScore = computerScore+1
+        results.appendChild(lose)
         return("You lose! Scissors beat Rocks.")
     } else if (userChoice === "rock" && computerChoice === "paper"){
+        results.appendChild(win)
         playerScore = playerScore + 1
         return("You win! Rocks beat Paper.")
     } else if (userChoice === "paper" && computerChoice === "paper"){
+        results.appendChild(tie)
         return("Ahh!! Seems like a tie. Try again.")
     } else if (userChoice === "paper" && computerChoice === "scissors"){
+        results.appendChild(lose)
         computerScore = computerScore+1
         return("You lose! scissors beat paper.")
     } else if (userChoice === "paper" && computerChoice === "rock"){
+        results.appendChild(win)
         playerScore = playerScore+1
         return("You win! Paper beats Rocks.")
     } else if (userChoice === "scissors" && computerChoice === "scissors"){
+        results.appendChild(tie)
         return("Ahh!! Seems like a tie. Try again.")
     } else if (userChoice === "scissors" && computerChoice === "rock"){
+        results.appendChild(lose)
         computerScore = computerScore+1
         return("You lose! Rocks beat Scissors.")
     } else if (userChoice === "scissors" && computerChoice === "paper"){
+        results.appendChild(win)
         playerScore = playerScore+1
         return("You win! Scissors beat Paper.")
     }
@@ -66,25 +81,24 @@ const buttons = document.querySelectorAll("button")
 
 buttons.forEach((button)=>{
     button.addEventListener("click", ()=>{
-        console.log(button.id)
         game(button.id)
     })
 })
 
 
-
-
-
 function game(playerSelection){
         const computerSelection = getComputerChoice(random());
         console.log(playRps(playerSelection, computerSelection))
-        console.log(playerSelection)
     if (playerScore > computerScore){
         result = "won! :D"
+        pScore.textContent = playerScore
     } else {
         result;
+        cScore.textContent = computerScore
     }
     console.log(`Your score is ${playerScore}, your opponent's score is ${computerScore}. You ${result}`)
 }
 
 
+const pScore = document.querySelector(".playerScore")
+const cScore = document.querySelector(".computerScore")
