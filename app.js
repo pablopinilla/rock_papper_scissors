@@ -60,13 +60,10 @@ let computerScore = 0;
 let result = "lost! :("
 
 function game(){
-    for(let i = 0; i < 5; i++){
-
         let playerSelection = prompt("Rocks, Paper or Scissors?")
         const computerSelection = getComputerChoice(random());
         console.log(playRps(playerSelection.toLowerCase(), computerSelection))
         console.log(playerSelection)
-    }
     if (playerScore > computerScore){
         result = "won! :D"
     } else {
