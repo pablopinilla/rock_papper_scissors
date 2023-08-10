@@ -29,36 +29,36 @@ lose.textContent = "You lose!"
 
 function playRps(userChoice, computerChoice = "rock"){
     if (userChoice === "rock" && computerChoice === "rock"){
-        results.appendChild(tie)
+        results.textContent = "Looks like a tie, try again"
         return("Ahh!! Seems like a tie. Try again.")
     } else if (userChoice === "rock" && computerChoice === "scissors"){
         computerScore = computerScore+1
-        results.appendChild(lose)
+        results.textContent = "You lost this round"
         return("You lose! Scissors beat Rocks.")
     } else if (userChoice === "rock" && computerChoice === "paper"){
-        results.appendChild(win)
+        results.textContent = "You win this round"
         playerScore = playerScore + 1
         return("You win! Rocks beat Paper.")
     } else if (userChoice === "paper" && computerChoice === "paper"){
-        results.appendChild(tie)
+        results.textContent = "Looks like a tie, try again"
         return("Ahh!! Seems like a tie. Try again.")
     } else if (userChoice === "paper" && computerChoice === "scissors"){
-        results.appendChild(lose)
+        results.textContent = "You lost this round"
         computerScore = computerScore+1
         return("You lose! scissors beat paper.")
     } else if (userChoice === "paper" && computerChoice === "rock"){
-        results.appendChild(win)
+        results.textContent = "You win this round"
         playerScore = playerScore+1
         return("You win! Paper beats Rocks.")
     } else if (userChoice === "scissors" && computerChoice === "scissors"){
-        results.appendChild(tie)
+        results.textContent = "Looks like a tie, try again"
         return("Ahh!! Seems like a tie. Try again.")
     } else if (userChoice === "scissors" && computerChoice === "rock"){
-        results.appendChild(lose)
+        results.textContent = "You lost this round"
         computerScore = computerScore+1
         return("You lose! Rocks beat Scissors.")
     } else if (userChoice === "scissors" && computerChoice === "paper"){
-        results.appendChild(win)
+        results.textContent = "You win this round"
         playerScore = playerScore+1
         return("You win! Scissors beat Paper.")
     }
@@ -87,31 +87,31 @@ buttons.forEach((button)=>{
 
 
 function game(playerSelection){
-    pScore.textContent = "0"
-    cScore.textContent = "0"
     let gameOver = false
-    if (gameOver){
-        pScore.textContent = "0"
-        cScore.textContent = "0"
-    }
-        const computerSelection = getComputerChoice(random());
-        playRps(playerSelection, computerSelection);
+    const computerSelection = getComputerChoice(random());
+    playRps(playerSelection, computerSelection);
         
     if (playerScore > computerScore){
-            pScore.textContent = playerScore
-            cScore.textContent = computerScore
+    pScore.textContent = playerScore
+    cScore.textContent = computerScore
     } else {
     pScore.textContent = playerScore
     cScore.textContent = computerScore
     }
     if (playerScore === 5){
+    results.textContent = "You win this battle!"
     console.log("YOU WONNNNNNNNN")
+    playerScore = 0
+    computerScore= 0
     pScore.textContent = "0"
     cScore.textContent = "0"
     gameOver = true
     }
     if (computerScore === 5){
+    results.textContent = "You lost this battle!"
     console.log("YOU LOSTTTTTTTTTTTN")
+    playerScore = 0
+    computerScore= 0
     pScore.textContent = "0"
     cScore.textContent = "0"
     gameOver = true
