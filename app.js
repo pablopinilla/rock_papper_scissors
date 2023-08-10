@@ -87,16 +87,35 @@ buttons.forEach((button)=>{
 
 
 function game(playerSelection){
-        const computerSelection = getComputerChoice(random());
-        console.log(playRps(playerSelection, computerSelection))
-    if (playerScore > computerScore){
-        result = "won! :D"
-        pScore.textContent = playerScore
-    } else {
-        result;
-        cScore.textContent = computerScore
+    pScore.textContent = "0"
+    cScore.textContent = "0"
+    let gameOver = false
+    if (gameOver){
+        pScore.textContent = "0"
+        cScore.textContent = "0"
     }
-    console.log(`Your score is ${playerScore}, your opponent's score is ${computerScore}. You ${result}`)
+        const computerSelection = getComputerChoice(random());
+        playRps(playerSelection, computerSelection);
+        
+    if (playerScore > computerScore){
+            pScore.textContent = playerScore
+            cScore.textContent = computerScore
+    } else {
+    pScore.textContent = playerScore
+    cScore.textContent = computerScore
+    }
+    if (playerScore === 5){
+    console.log("YOU WONNNNNNNNN")
+    pScore.textContent = "0"
+    cScore.textContent = "0"
+    gameOver = true
+    }
+    if (computerScore === 5){
+    console.log("YOU LOSTTTTTTTTTTTN")
+    pScore.textContent = "0"
+    cScore.textContent = "0"
+    gameOver = true
+    }
 }
 
 
